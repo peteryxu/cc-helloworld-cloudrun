@@ -1,0 +1,30 @@
+{
+    "configurations": [
+        {
+            "name": "Cloud Run: Run/Debug Locally",
+            "type": "cloudcode.cloudrun",
+            "request": "launch",
+            "build": {
+                "buildpacks": {
+                    "path": "pom.xml",
+                    "builder": "gcr.io/buildpacks/builder:v1"
+                }
+            },
+            "image": "cc-helloworld-cloudrun",
+            "service": {
+                "name": "cc-helloworld-cloudrun",
+                "containerPort": 8080,
+                "serviceAccountName": "sa4java-myfirstproject@profound-surge-308917.iam.gserviceaccount.com",
+                "resources": {
+                    "limits": {
+                        "memory": "256Mi"
+                    }
+                }
+            },
+            "target": {
+                "minikube": {}
+            },
+            "watch": true
+        }
+    ]
+}
